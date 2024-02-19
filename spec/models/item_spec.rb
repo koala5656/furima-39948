@@ -40,47 +40,44 @@ RSpec.describe Item, type: :model do
       it 'userが紐付いていないと保存できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
 
       it 'category_idが1では登録できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
 
       it 'condition_idが1では登録できない' do
         @item.condition_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition must be other than 1")
+        expect(@item.errors.full_messages).to include('Condition must be other than 1')
       end
 
       it 'shipping_idが1では登録できない' do
         @item.shipping_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping must be other than 1")
+        expect(@item.errors.full_messages).to include('Shipping must be other than 1')
       end
 
       it 'prefecture_idが1では登録できない' do
         @item.prefecture_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
       end
 
       it 'delivery_time_idが1では登録できない' do
         @item.delivery_time_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery time must be other than 1")
+        expect(@item.errors.full_messages).to include('Delivery time must be other than 1')
       end
 
       it 'Priceは300円から9,999,999円までの金額で半角数字でないと登録できない' do
         @item.price = '３３３ａa'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は300円から9,999,999円までの金額を半角数字で入力してください")
+        expect(@item.errors.full_messages).to include('Price は300円から9,999,999円までの金額を半角数字で入力してください')
       end
-
-
-
     end
   end
 end
