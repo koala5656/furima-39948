@@ -133,6 +133,7 @@
     <% if @items.any? %>
       <li class='list'>
         <% @items.each do |item| %>
+         <%= link_to item_path(item) do %>
           <div class='item-img-content'>
           <%= image_tag item.image.variant(resize: '229.41x229.41'), class: "item-img" if item.image.attached? %>
 
@@ -156,6 +157,7 @@
             </div>
           </div>
           </div>
+         <% end %>
         <% end %>
       </li>
 
