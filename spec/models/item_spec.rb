@@ -46,31 +46,31 @@ RSpec.describe Item, type: :model do
       it 'category_idが1では登録できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Category must be other than 1')
+        expect(@item.errors.full_messages).to include('Category は必ず選択してください')
       end
 
       it 'condition_idが1では登録できない' do
         @item.condition_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Condition must be other than 1')
+        expect(@item.errors.full_messages).to include('Condition は必ず選択してください')
       end
 
       it 'shipping_idが1では登録できない' do
         @item.shipping_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping must be other than 1')
+        expect(@item.errors.full_messages).to include('Shipping は必ず選択してください')
       end
 
       it 'prefecture_idが1では登録できない' do
         @item.prefecture_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
+        expect(@item.errors.full_messages).to include('Prefecture は必ず選択してください')
       end
 
       it 'delivery_time_idが1では登録できない' do
         @item.delivery_time_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Delivery time must be other than 1')
+        expect(@item.errors.full_messages).to include('Delivery time は必ず選択してください')
       end
 
       it 'Priceは300円から9,999,999円までの金額で半角数字でないと登録できない' do
