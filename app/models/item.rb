@@ -14,7 +14,8 @@ class Item < ApplicationRecord
   validates :title, :summary, :price, :image, presence: true
 
   # プルダウンの選択が「---」の時は保存できないようにする
-  validates :category_id, :condition_id, :shipping_id, :prefecture_id, :delivery_time_id, numericality: { other_than: 1 }
+  validates :category_id, :condition_id, :shipping_id, :prefecture_id, :delivery_time_id,
+            numericality: { other_than: 1, message: 'は必ず選択してください' }
 
   validates :price,
             numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
