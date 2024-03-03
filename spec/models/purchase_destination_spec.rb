@@ -7,7 +7,6 @@ RSpec.describe PurchaseDestination, type: :model do
   end
 
   describe '商品購入' do
-
     context '購入できる場合' do
       it 'すべての値が正しく入力されていれば購入できる' do
         expect(@purchase_destination).to be_valid
@@ -29,19 +28,19 @@ RSpec.describe PurchaseDestination, type: :model do
       it 'postal_codeが全角文字列だと保存できない' do
         @purchase_destination.postal_code = '１２３－４５６７'
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("Postal code は「3桁ハイフン4桁」の半角文字列で入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('Postal code は「3桁ハイフン4桁」の半角文字列で入力してください')
       end
 
       it 'postal_codeがハイフン無しの数字のみだと保存できない' do
         @purchase_destination.postal_code = '1234567'
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("Postal code は「3桁ハイフン4桁」の半角文字列で入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('Postal code は「3桁ハイフン4桁」の半角文字列で入力してください')
       end
 
       it 'prefecture_idが1では登録できない' do
         @purchase_destination.prefecture_id = '1'
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("Prefecture は必ず選択してください")
+        expect(@purchase_destination.errors.full_messages).to include('Prefecture は必ず選択してください')
       end
 
       it 'municipalityが空では購入できない' do
@@ -65,19 +64,19 @@ RSpec.describe PurchaseDestination, type: :model do
       it 'phone_numberはハイフンがあると保存できない' do
         @purchase_destination.phone_number = '123-4567-8912'
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("Phone number はハイフンを入れずに、10桁以上11桁以内の半角数値で入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('Phone number はハイフンを入れずに、10桁以上11桁以内の半角数値で入力してください')
       end
 
       it 'phone_numberは10桁未満だと保存できない' do
         @purchase_destination.phone_number = '123456789'
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("Phone number はハイフンを入れずに、10桁以上11桁以内の半角数値で入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('Phone number はハイフンを入れずに、10桁以上11桁以内の半角数値で入力してください')
       end
 
       it 'phone_numberは12桁以上だと保存できない' do
         @purchase_destination.phone_number = '123456789123'
         @purchase_destination.valid?
-        expect(@purchase_destination.errors.full_messages).to include("Phone number はハイフンを入れずに、10桁以上11桁以内の半角数値で入力してください")
+        expect(@purchase_destination.errors.full_messages).to include('Phone number はハイフンを入れずに、10桁以上11桁以内の半角数値で入力してください')
       end
 
       it 'tokenが空では購入できない' do
@@ -85,8 +84,6 @@ RSpec.describe PurchaseDestination, type: :model do
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Token can't be blank")
       end
-    
     end
-
   end
 end
