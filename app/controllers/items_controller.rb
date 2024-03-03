@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return if current_user.id == @item.user_id
+    return if current_user.id == @item.user_id && @item.purchase.blank?
 
     redirect_to '/'
   end
