@@ -39,7 +39,7 @@ RSpec.describe PurchaseDestination, type: :model do
       end
 
       it 'prefecture_idが1では登録できない' do
-        @purchase_destination.prefecture = '1'
+        @purchase_destination.prefecture_id = '1'
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Prefecture は必ず選択してください")
       end
@@ -78,6 +78,12 @@ RSpec.describe PurchaseDestination, type: :model do
         @purchase_destination.phone_number = '123456789123'
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Phone number はハイフンを入れずに、10桁以上11桁以内の半角数値で入力してください")
+      end
+
+      it 'tokenが空では購入できない' do
+        @purchase_destination.token = nil
+        @purchase_destination.valid?
+        expect(@purchase_destination.errors.full_messages).to include("Token can't be blank")
       end
     
     end
