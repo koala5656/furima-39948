@@ -27,6 +27,8 @@ class PurchasesController < ApplicationController
 
 	def set_item
     @item = Item.find(params[:item_id])
+		return if current_user.id != @item.user_id && @item.purchase.blank?
+		redirect_to '/'
   end
 
 	def pay_item
