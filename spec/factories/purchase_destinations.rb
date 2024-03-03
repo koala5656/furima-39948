@@ -6,8 +6,6 @@ FactoryBot.define do
     block_number              { '桜台2-2-2' }
     building_name             { '桜ハイツ202' }
     phone_number              { 12_345_678_912 }
-    user_id                   { 2 }
-    item_id                   { 2 }
     token { 'tok_abcdefghijk00000000000000000' }
   end
 end
